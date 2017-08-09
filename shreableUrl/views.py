@@ -26,7 +26,6 @@ class SnippetView(View):
         sid=0
         msg = ''
         form=SnippetForm(request.POST)
-        print form
         if form.is_valid():
             signer = Signer(form.cleaned_data['key'])
             s=Snippet.objects.create(data=signer.sign(form.cleaned_data['data']),\
@@ -57,7 +56,6 @@ class SnippetDetailView(View):
       Display Snippet Details
     """
     def post(self,request):
-        print
         s = Snippet.objects.get(id=request.POST['snippet_id'])
         if request.POST['key'] == s.key:
             signer = Signer(s.key)
