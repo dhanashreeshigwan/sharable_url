@@ -1,0 +1,50 @@
+<html>
+    {% block header %}
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    {% endblock %}
+    {% block content %}
+    <body>
+    <div class="container">
+        <a href="{% url 'logout'%}" >Logout</a>
+        {% if msg %}
+            <div class="alert alert-success">{{msg}}</div>
+        {% endif %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <form action="/" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                         <label for="id_data">Data:</label>
+                            <textarea class="form-control" rows="5" id="id_data" name="data" required=""></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                         <label for="id_key">Key:</label>
+                            <input id="id_key" maxlength="32" class="form-control" name="key" type="text">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-10">
+                        <input type="submit" value="Generate URL" class="btn btn-default" />
+                        </div>
+                    </div>
+                </form>
+                {% if snippet_id != 0 %}
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                     <a href="{% url 'keylogin' snippet_id %}" target="_blank">Generated URL</a>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+   </body>
+    {% endblock %}
+</html>

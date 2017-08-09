@@ -1,0 +1,6 @@
+<form action="{% url 'snippetDetail' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" value="{{id}}" name="snippet_id">
+    Enter Key: <input type="text" name="key">
+    <input type="submit" value="Done" />
+</form>

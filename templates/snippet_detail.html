@@ -1,0 +1,33 @@
+<html>
+    {% block header %}
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+    #details{
+            position: fixed;
+            top: 30%;
+            left: 38%;
+            width: 50em;
+            height: 30em;
+            margin-top: -9em;
+            margin-left: -15em;
+            border: 1px solid #ccc;
+            background-color: #f3f3f3;
+        }
+</style>
+        </head>
+    {% endblock %}
+    {% block content %}
+    <body>
+        <div id="details">
+            <p><b>Information: </b></p>
+            {% if flag %}
+                {{data}}
+            {% else %}
+                Invalid Key
+            {% endif %}
+        </div>
+    </body>
+    {% endblock %}
+</html>
